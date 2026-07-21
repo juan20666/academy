@@ -1,26 +1,29 @@
 spring:
   application:
     name: business-management-backend-academy
-  # Configuración de PostgreSQL
+
   datasource:
     url: jdbc:postgresql://localhost:5433/ms_auth
     username: postgres
     password: 2007
     driver-class-name: org.postgresql.Driver
-  # Configuración de JPA
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
   jpa:
     hibernate:
-      ddl-auto: update  # Cambia a 'validate' en producción
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
- 
+
 server:
   port: 8080
- 
+
 logging:
   level:
     com.datacenter.business_management_backend_academy: DEBUG
