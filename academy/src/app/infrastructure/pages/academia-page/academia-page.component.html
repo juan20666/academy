@@ -1,0 +1,228 @@
+<ng-template #navList>
+  <nav class="space-y-1">
+    @for (item of navItems; track item.id) {
+      <button
+        type="button"
+        class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium transition"
+        [ngClass]="item.active ? 'bg-blue-900 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-50'"
+      >
+        <span
+          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+          [ngClass]="item.active ? 'bg-white/10' : 'bg-slate-100 text-slate-500'"
+        >
+          @switch (item.icon) {
+            @case ('gear') {
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9c.09.7.55 1.31 1.56 1.04H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.04Z" />
+              </svg>
+            }
+            @case ('academy') {
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+              </svg>
+            }
+          }
+        </span>
+        <span class="leading-tight">{{ item.label }}</span>
+      </button>
+    }
+  </nav>
+</ng-template>
+
+<ng-template #iconSwitch let-icon="icon">
+  @switch (icon) {
+    @case ('dashboard') {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    }
+    @case ('document') {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5" />
+      </svg>
+    }
+    @case ('folder') {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
+      </svg>
+    }
+    @case ('clock') {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="9" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+      </svg>
+    }
+    @case ('activity') {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 8-6-16-3 8H2" />
+      </svg>
+    }
+  }
+</ng-template>
+
+<div class="min-h-screen bg-slate-50">
+  <header class="flex items-center justify-between border-b border-slate-100 bg-white px-4 py-3 lg:px-8">
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 lg:hidden"
+        (click)="toggleSidebar()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <div>
+        <p class="text-2xl font-bold leading-none tracking-tight text-blue-900">GRH</p>
+        <p class="text-[9px] font-semibold uppercase tracking-wide text-slate-400">
+          Gestor de Recursos Humanos
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <span class="hidden text-sm font-medium text-slate-700 sm:block">Super Administrador</span>
+      <div
+        class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-100 text-sm font-semibold text-blue-900"
+      >
+        SA
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+      </svg>
+    </div>
+  </header>
+
+  <div class="flex">
+    <aside class="hidden w-64 shrink-0 border-r border-slate-100 bg-white px-4 py-6 lg:block">
+      <ng-container *ngTemplateOutlet="navList" />
+    </aside>
+
+    @if (isSidebarOpen()) {
+      <div class="fixed inset-0 z-30 lg:hidden">
+        <div class="absolute inset-0 bg-black/30" (click)="toggleSidebar()"></div>
+        <aside class="relative z-40 h-full w-72 bg-white px-4 py-6 shadow-xl">
+          <ng-container *ngTemplateOutlet="navList" />
+        </aside>
+      </div>
+    }
+
+    <main class="min-w-0 flex-1 px-4 py-6 lg:px-8">
+      <div class="flex gap-1 overflow-x-auto rounded-2xl border border-slate-100 bg-white p-2 shadow-sm">
+        @for (tab of tabs; track tab.id) {
+          <button
+            type="button"
+            class="flex shrink-0 items-center gap-2 rounded-xl border-b-2 px-4 py-2.5 text-sm font-medium transition"
+            [ngClass]="tab.active ? 'border-blue-600 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-700'"
+          >
+            <ng-container *ngTemplateOutlet="iconSwitch; context: { icon: tab.icon }" />
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+
+      <div
+        class="mt-4 flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between"
+      >
+        <div>
+          <h1 class="text-3xl font-bold text-slate-800">Academia</h1>
+          <p class="mt-1 text-sm text-slate-400">
+            Consulta procedimientos, manuales y documentación corporativa
+          </p>
+        </div>
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 self-start rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
+        >
+          Nuevo articulo
+          <span class="text-base leading-none">+</span>
+        </button>
+      </div>
+
+      <div class="mt-4">
+        <app-search-bar [tags]="frequentTags" />
+      </div>
+
+      @if (isLoading()) {
+        <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          @for (placeholder of [1, 2, 3, 4]; track placeholder) {
+            <div class="h-[104px] animate-pulse rounded-2xl border border-slate-100 bg-white shadow-sm"></div>
+          }
+        </div>
+      } @else {
+        <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          @for (kpi of kpiCards(); track kpi.id) {
+            <app-kpi-card [kpi]="kpi" />
+          }
+        </div>
+      }
+
+      <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div class="rounded-2xl border border-slate-100 bg-white shadow-sm lg:col-span-2">
+          <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+            <div class="flex items-center gap-2 text-slate-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 17 9 11 13 15 21 7M21 7h-5M21 7v5" />
+              </svg>
+              <h2 class="text-base font-semibold">Más Consultados</h2>
+            </div>
+            <button type="button" class="text-sm font-medium text-blue-600 hover:text-blue-700">
+              Ver todos →
+            </button>
+          </div>
+          <div>
+            @for (article of topArticles(); track article.id; let i = $index) {
+              <app-article-list-item [article]="article" mode="ranked" [position]="i + 1" />
+            }
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="rounded-2xl border border-slate-100 bg-white shadow-sm">
+            <div class="flex items-center gap-2 border-b border-slate-100 px-6 py-4 text-slate-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+              </svg>
+              <h2 class="text-base font-semibold">Actualizaciones</h2>
+            </div>
+            <div>
+              @for (article of updates(); track article.id) {
+                <app-article-list-item [article]="article" mode="update" />
+              }
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+            <div class="flex items-center gap-2 text-slate-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+              </svg>
+              <h2 class="text-base font-semibold">Accesos Rápidos</h2>
+            </div>
+            <div class="mt-4 grid grid-cols-4 gap-2">
+              @for (item of quickAccessItems; track item.id) {
+                <button
+                  type="button"
+                  class="flex flex-col items-center gap-1.5 rounded-xl border border-slate-100 px-2 py-3 text-slate-500 transition hover:border-blue-200 hover:text-blue-600"
+                >
+                  <ng-container *ngTemplateOutlet="iconSwitch; context: { icon: item.icon }" />
+                  <span class="text-center text-[11px] font-medium leading-tight">{{ item.label }}</span>
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
